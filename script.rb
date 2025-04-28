@@ -1,6 +1,6 @@
 # Basically, perform a case insensitive search, much like using Find in a document, to count the occurrences of each word from the provided dictionary parameter in a given string
 
-# Psuedocode
+# Pseudocode
 # 1. Downcase the string input
 # 2. Downcase the dictionary words
 # 3. Create an empty hash to keep track of matches
@@ -11,8 +11,19 @@
 #         - If the word is already in the hash: increase the count value by 1
 #5. Return the hash
 
-def substrings(word, dictionary)
+def substrings(string, dictionary)
+  string = string.downcase
+  dictionary = dictionary.map { |word| word.downcase }
 
+  word_occurrences = Hash.new(0)
+
+  dictionary.each do |word|
+    if string.include?(word)
+      word_occurrences[word] += 1
+    end
+  end
+
+  word_occurrences
 end
 
 # Testing
