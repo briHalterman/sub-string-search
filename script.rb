@@ -18,9 +18,8 @@ def substrings(string, dictionary)
   word_occurrences = Hash.new(0)
 
   dictionary.each do |word|
-    if string.include?(word)
-      word_occurrences[word] += 1
-    end
+    count = string.scan(word).length
+    word_occurrences[word] += count if count > 0
   end
 
   word_occurrences
